@@ -1,0 +1,29 @@
+name: Sync Upstream
+
+#on:
+  #schedule:
+  #  - cron: "*/5 * * * *"
+
+env:
+  UPSTREAM_URL: "https://github.com/VeteranOneDev/bigfive-web.git"
+  WORKFLOW_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+  UPSTREAM_BRANCH: "master"
+  DOWNSTREAM_BRANCH: "master"
+
+on:
+  schedule:
+    #- cron: '1 18 * * *'
+     - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: GitHub Sync to Upstream Repository
+        uses: dabreadman/sync-upstream-repo@v1.1.0.b
+        with: 
+          upstream_repo: ${{ env.UPSTREAM_URL }}
+          upstream_branch: ${{ env.UPSTREAM_BRANCH }}
+          downstream_branch: ${{ env.DOWNSTREAM_BRANCH }}
+          token: ${{ env.WORKFLOW_TOKEN }}
