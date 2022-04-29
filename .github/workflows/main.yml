@@ -1,4 +1,4 @@
-name: Sync Upstream
+name: Sync BigFive Upstream
 
 env:
   UPSTREAM_URL: "https://github.com/VeteranOneDev/bigfive-web.git"
@@ -15,7 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: GitHub Sync to Upstream Repository
+      - name: BigFive Sync to Upstream Repository
         uses: dabreadman/sync-upstream-repo@v1.1.0.b
         with: 
           upstream_repo: ${{ env.UPSTREAM_URL }}
